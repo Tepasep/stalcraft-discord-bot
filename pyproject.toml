@@ -1,0 +1,26 @@
+[project]
+name = "stalcraft-discord-bot"
+version = "0.1.0"
+description = "Discord bot for Stalcraft:X stats"
+authors = [
+    {name = "Tepasep", email = "tepasep@vk.com"},
+
+]
+dependencies = [
+    "discord.py>=2.3.0",
+    "python-dotenv>=1.0.0",
+    "aiohttp>=3.9.0",
+]
+requires-python = "==3.13.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.scripts]
+bot = "python -m src.main"

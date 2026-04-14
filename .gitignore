@@ -1,0 +1,30 @@
+
+emission_config.json
+*.log
+
+# Python
+_.py[cod]
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.pdm-python
+.env
+*.pyc
+venv/
+.venv/
+*pyo
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+
+
