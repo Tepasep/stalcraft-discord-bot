@@ -150,7 +150,7 @@ class StatsView(discord.ui.View):
         
         elif format_type == "distance":
             try:
-                return f"{round(float(value) / 100, 1)}"
+                return f"{round(float(value) / 100000, 1)} км"
             except:
                 return "N/A"
         
