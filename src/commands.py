@@ -150,7 +150,7 @@ class StatsView(discord.ui.View):
         
         elif format_type == "distance":
             try:
-                return f"{round(float(value) / 1000, 1)} км"
+                return f"{round(float(value) / 100, 1)}"
             except:
                 return "N/A"
         
@@ -187,7 +187,6 @@ class StatsView(discord.ui.View):
         embed = discord.Embed(
             title=cat_data["title"],
             color=discord.Color.blue(),
-            timestamp=datetime.utcnow()
         )
         
         # Основная информация
