@@ -21,8 +21,6 @@ async def _get_app_token() -> str:
     
     if _token_cache["access_token"] and now < _token_cache["expires_at"]:
         return _token_cache["access_token"]
-
-    print("🔑 [AUTH] Запрашиваем Application Token...")
     
     data = {
         "grant_type": "client_credentials",
