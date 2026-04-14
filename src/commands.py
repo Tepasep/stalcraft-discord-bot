@@ -187,24 +187,28 @@ class StatsView(discord.ui.View):
         embed = discord.Embed(
             title=cat_data["title"],
             color=discord.Color.blue(),
-            timestamp=discord.utils.utcnow()
+            timestamp=datetime.utcnow()
         )
         
+        # Основная информация
         username = self.character_data.get("username", "Unknown")
         alliance = self.character_data.get("alliance", "none")
         faction_name = FACTION_NAMES.get(alliance.lower(), alliance.title())
         
-        last_login_str = self.character_data.get("lastLogin")
-        time_str = "??:??"
-        if last_login_str:
-            try:
-                dt = datetime.fromisoformat(last_login_str.replace("Z", "+00:00"))
-                time_str = dt.strftime("%H:%M")
-            except:
-                pass
+        # Получаем тег клана
+        clan_data = self.character_data.get("clan")
+
+        clan_data = self.character_data.get("clan")
+        if clan_data:
+            clan_tag = clan_data.get("info", {}).get("tag", "")
+            clan_display = f"[{clan_tag}]" if clan_tag else "Без клана"
+        else:
+            clan_display = "Без клана"
         
-        embed.description = f"`{time_str}` | **{username}** | {faction_name}"
+        # Описание: Ник | Группировка | Клан
+        embed.description = f"{clan_display} | **{username}** | {faction_name}"
         
+        # Добавляем поля
         for field_name, stat_id, format_type in cat_data["fields"]:
             field_value = self.get_stat_value(stat_id, format_type)
             embed.add_field(name=field_name, value=field_value, inline=True)
