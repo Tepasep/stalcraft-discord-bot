@@ -68,31 +68,6 @@ async def fetch_from_api(endpoint_path: str, use_token: bool = True) -> Optional
             "User-Agent": "StalcraftStatsBot/1.0"
         }
     
-    url = f"{config.API_BASE_URL}/{config.STALCRAFT_REGION}/{endpoint_path}"
-    print(f"🔍 [DEBUG] GET {url}")
-    
-    try:
-        async with aiohttp.ClientSession() as session:
-            async with session.get(url, headers=headers, timeout=aiohttp.ClientTimeout(total=15)) as response:
-                print(f"📡 [DEBUG] Status: {response.status}")
-                
-                if response.status == 200:
-                    return await response.json()
-                elif response.status == 401:
-                    print("⚠️ [DEBUG] 401: Токен недействителен")
-                    _token_cache["expires_at"] = 0
-                    return None
-                elif response.status == 404:
-                    print(f"❌ [DEBUG] 404: Ресурс не найден")
-                    return None
-                else:
-                    text = await response.text()
-                    print(f"⚠️ [DEBUG] Ошибка {response.status}: {text[:200]}")
-                    return None
-    except Exception as e:
-        print(f"❌ [DEBUG] Сетевая ошибка: {e}")
-        return None
-
 
 def get_cached(key: str) -> Optional[Dict]:
     if key in _player_cache:
