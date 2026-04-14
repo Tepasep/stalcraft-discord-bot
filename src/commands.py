@@ -103,7 +103,7 @@ class StatsView(discord.ui.View):
     
     async def interaction_check(self, interaction: discord.Interaction) -> bool:
         if interaction.user != self.original_author:
-            await interaction.response.send_message("❌ Только вы можете выбирать категории!", ephemeral=True)
+            await interaction.response.send_message("❌ Вы не можете выбирать категории в этом сообщении!", ephemeral=True)
             return False
         return True
     
