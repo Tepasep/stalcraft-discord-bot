@@ -259,7 +259,7 @@ class EmissionCog(commands.Cog):
             )
             await ctx.send(embed=embed)
     
-    @tasks.loop(minutes=5)
+    @tasks.loop(seconds=10)
     async def emission_check(self):
         """ Проверка новых выбросов каждые 5 минут"""
         try:
