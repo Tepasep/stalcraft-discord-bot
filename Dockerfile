@@ -26,5 +26,5 @@ COPY . .
 # Добавляем виртуальное окружение PDM в PATH
 ENV PATH="/app/.venv/bin:$PATH"
 
-# ЗАПУСК: Указываем прямой путь к файлу main.py в папке src
-CMD ["python", "src/main.py"]
+# ЗАПУСК
+CMD ["python", "-m", "src.main"]
