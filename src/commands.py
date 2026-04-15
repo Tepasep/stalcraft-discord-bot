@@ -263,7 +263,11 @@ class StatsCog(commands.Cog):
         rank_ru = CLAN_RANKS.get(rank_en.upper(), rank_en.title())
         
         return f"{clan_display_name} | {rank_ru}"
-
+    @commands.command(name="ping")
+    async def ping(self, ctx: commands.Context):
+        latency = round(self.bot.latency*1000)
+        await ctx.send(f'Пинг **latency** мс')
+        
     @commands.command(name="stats", aliases=["s"])
     async def stats(self, ctx: commands.Context, *, nickname: str):
         """Показать статистику игрока: !stats NickName"""
