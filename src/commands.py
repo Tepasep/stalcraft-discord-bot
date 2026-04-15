@@ -9,7 +9,7 @@ FACTION_NAMES = {
     "merc": "Наемники",
     "covenant": "Завет",
     "freedom": "Заря",
-    "Duty": "Рубеж",
+    "duty": "Рубеж",
     "bandits": "Бандиты",
     "stalkers": "Сталкеры",
 }
