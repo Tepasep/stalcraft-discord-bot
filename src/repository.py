@@ -38,11 +38,11 @@ async def _get_app_token() -> str:
                     token_data = await resp.json()
                     _token_cache["access_token"] = token_data["access_token"]
                     _token_cache["expires_at"] = now + token_data.get("expires_in", 3600) - 60
-                    print("✅ [AUTH] Application Token получен")
+                    print(" [AUTH] Application Token получен")
                     return _token_cache["access_token"]
                 else:
                     err_text = await resp.text()
-                    print(f"❌ [AUTH] Ошибка {resp.status}: {err_text[:200]}")
+                    print(f" [AUTH] Ошибка {resp.status}: {err_text[:200]}")
                     raise RuntimeError(f"Не удалось получить токен: {resp.status}")
     except Exception as e:
         print(f"❌ [AUTH] Ошибка соединения: {e}")
@@ -122,11 +122,9 @@ async def get_player_stats(nickname: str) -> Optional[Dict]:
     # Правильный endpoint из документации
     endpoint = f"character/by-name/{safe_nick}/profile"
     
-    print(f"🔍 Запрос профиля игрока: {nickname}")
     player_data = await fetch_from_api(endpoint, use_token=True)
     
     if player_data is not None:
-        print(f"✅ Профиль получен")
         set_cache(cache_key, player_data)
         
     return player_data

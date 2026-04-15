@@ -299,15 +299,12 @@ class EmissionCog(commands.Cog):
                             title="🌪️ НАЧАЛСЯ ВЫБРОС!",
                             description=f"⚠️ **В Зоне начался выброс!**\n\n{msk_time_full}",
                             color=discord.Color.red(),
-                            timestamp=datetime.now(MSK_TZ)
                         )
-                        embed.set_footer(text="Stalcraft: X Emission Alert")
                         
                         await channel.send(embed=embed)
-                        print(f"✅ Уведомление о выбросе отправлено в канал {channel_id}")
                         
                     except Exception as e:
-                        print(f"❌ Не удалось отправить уведомление в канал {channel_id}: {e}")
+                        continue
                         
         except Exception as e:
             print(f"❌ Ошибка в emission_check: {e}")
@@ -316,13 +313,10 @@ class EmissionCog(commands.Cog):
     async def before_emission_check(self):
         """Ждём готовности бота перед запуском задачи"""
         await self.bot.wait_until_ready()
-        try:
-            data = await repository.get_emission_data()
-            if data:
-                self.last_emission_start = data.get("currentStart")
-                print(f"🌪️ Последний выброс при старте: {self.last_emission_start}")
-        except Exception as e:
-            print(f"⚠️ Не удалось инициализировать выбросы: {e}")
+        data = await repository.get_emission_data()
+        if data:
+            self.last_emission_start = data.get("currentStart")
+            print(f"🌪️ Последний выброс при старте: {self.last_emission_start}")
 
 
 async def setup(bot: commands.Bot):
