@@ -8,7 +8,7 @@ from typing import Dict, Any, Optional
 FACTION_NAMES = {
     "merc": "Наемники",
     "covenant": "Завет",
-    "zarya": "Заря",
+    "freedom": "Заря",
     "dolg": "Долг",
     "bandit": "Бандиты",
     "stalker": "Сталкеры",
