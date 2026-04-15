@@ -266,8 +266,8 @@ class StatsCog(commands.Cog):
     @commands.command(name="ping")
     async def ping(self, ctx: commands.Context):
         latency = round(self.bot.latency*1000)
-        await ctx.send(f'Пинг **latency** мс')
-        
+        await ctx.send(f'Пинг **{latency}** мс')
+
     @commands.command(name="stats", aliases=["s"])
     async def stats(self, ctx: commands.Context, *, nickname: str):
         """Показать статистику игрока: !stats NickName"""
