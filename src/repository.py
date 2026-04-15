@@ -45,7 +45,7 @@ async def _get_app_token() -> str:
                     print(f" [AUTH] Ошибка {resp.status}: {err_text[:200]}")
                     raise RuntimeError(f"Не удалось получить токен: {resp.status}")
     except Exception as e:
-        print(f"❌ [AUTH] Ошибка соединения: {e}")
+        print(f"[AUTH] Ошибка соединения: {e}")
         raise
 
 
