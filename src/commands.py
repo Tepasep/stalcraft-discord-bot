@@ -86,7 +86,7 @@ def format_description(text: str) -> str:
     clean_text = '\n'.join(lines)
     
     if len(clean_text) > 1000:
-        clean_text = f"```{clean_text[:997]} + "..."```"
+        clean_text =  f"```{clean_text}```" 
         
     return clean_text if clean_text else "*Нет описания*"
 
